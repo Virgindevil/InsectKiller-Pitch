@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InsexStory - издательская презентация</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;700;800&display=swap');
+:root{--paper:#eeeae0;--ink:#101010;--muted:#5b5a56;--red:#d52b1e;--blue:#146aa1;--yellow:#e8c91b;--pink:#e91e8b;--line:#1b1b1b;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,Arial,sans-serif;background:#1a1a1a;line-height:1.55}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:radial-gradient(#000 0.65px,transparent .7px);background-size:5px 5px;z-index:9}
+.sitebar{position:sticky;top:0;z-index:10;background:#111;color:white;border-bottom:5px solid var(--red);padding:10px 4vw;display:flex;gap:20px;align-items:center;justify-content:space-between}
+.brand{font-family:Oswald,Impact,sans-serif;font-weight:700;letter-spacing:.04em;font-size:24px}.sitebar a{color:white;text-decoration:none;font-size:12px;text-transform:uppercase;font-weight:800}
+.hero,.paper{width:min(1180px,calc(100% - 32px));margin:22px auto;background:var(--paper);position:relative;overflow:hidden;box-shadow:0 10px 35px #0008;border:1px solid #777}
+.hero{min-height:88vh;padding:46px 52px 38px;display:flex;flex-direction:column;justify-content:space-between;background-image:linear-gradient(115deg,transparent 0 68%,rgba(213,43,30,.12) 68%),radial-gradient(circle at 82% 22%,rgba(0,0,0,.09),transparent 24%)}
+.hero:after,.paper:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background:repeating-linear-gradient(0deg,transparent 0 7px,#000 8px,transparent 9px)}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}h1,h2{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;line-height:.88;margin:0}h1{font-size:clamp(70px,13vw,170px);letter-spacing:-.045em;border-top:8px solid #111;border-bottom:8px solid #111;padding:8px 0 14px}.sub{font-family:Oswald,Impact,sans-serif;font-size:clamp(22px,4vw,50px);text-transform:uppercase;font-weight:700;margin:18px 0 8px}.tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 28px}.tag{border:2px solid #111;padding:5px 9px;font-weight:800;font-size:12px;background:#f6f2e8}.tag:nth-child(3n+1){box-shadow:5px 5px 0 var(--red)}.tag:nth-child(3n+2){box-shadow:5px 5px 0 var(--yellow)}.tag:nth-child(3n){box-shadow:5px 5px 0 var(--blue)}
+.logline{max-width:820px;border-left:12px solid var(--red);padding:15px 20px;background:#111;color:#fff;font-size:20px;font-weight:700;transform:rotate(-.35deg)}
+.paper{padding:48px 54px 58px}.section-no{position:absolute;right:28px;top:18px;font-family:Oswald,Impact,sans-serif;font-size:82px;font-weight:700;line-height:1;color:#00000012}.section-kicker{font-size:10px;font-weight:800;letter-spacing:.18em;margin-bottom:10px}h2{font-size:clamp(38px,6vw,72px);max-width:900px;letter-spacing:-.025em}h3{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;font-size:27px;margin:32px 0 8px}.rule{height:7px;background:#111;margin:18px 0 26px;position:relative}.rule:after{content:"";position:absolute;width:25%;height:    px;right:8%;background:var(--red);transform:skew(-25deg)}p{max-width:940px;font-size:15px}ul{max-width:940px;padding-left:25px}li{margin:8px 0}li::marker{color:var(--red)}
+.flow{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;font-size:clamp(20px,3vw,34px);font-weight:700;padding:22px;border:3px solid #111;margin:22px 0;background:#fff;box-shadow:9px 9px 0 var(--yellow)}
+.table-wrap{overflow-x:auto;margin:24px -8px;padding:8px}table{border-collapse:collapse;width:100%;font-size:12px;background:#f8f5ed;box-shadow:8px 8px 0 #111}th,td{border:2px solid #111;padding:10px;vertical-align:top;text-align:left}th{background:#111;color:white;text-transform:uppercase;font-family:Oswald,Impact,sans-serif;font-size:14px;letter-spacing:.03em}tbody tr:nth-child(even) td{background:#e5e0d5}
+.toc{width:min(1180px,calc(100% - 32px));margin:0 auto 22px;background:#eeeae0;border:1px solid #777;padding:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px}.toc a{display:flex;gap:10px;color:#111;text-decoration:none;border-bottom:1px solid #aaa;padding:7px;font-weight:700;font-size:12px}.toc span{font-family:Oswald,Impact,sans-serif;color:var(--red);font-size:18px;line-height:1}
+.mock-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:26px 0}.mock{min-height:270px;border:3px solid #111;background:#d9d4c9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:8px 8px 0 #111}.mock:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 18px,rgba(0,0,0,.035) 18px 20px)}.mock-num{position:absolute;left:14px;top:10px;font-family:Oswald,Impact,sans-serif;font-size:46px;font-weight:700;color:#111}.mock-label{position:relative;z-index:1;max-width:75%;text-align:center;font-family:Oswald,Impact,sans-serif;text-transform:uppercase;font-size:25px;line-height:1.05}.mock small{display:block;font-family:Inter,Arial,sans-serif;text-transform:none;font-size:11px;line-height:1.35;margin-top:10px;font-weight:700}.mock:nth-child(3n+1){box-shadow:8px 8px 0 var(--red)}.mock:nth-child(3n+2){box-shadow:8px 8px 0 var(--yellow)}.mock:nth-child(3n){box-shadow:8px 8px 0 var(--blue)}
+.print-note{font-size:11px;color:#ddd;text-align:center;margin:16px}
+@media(max-width:700px){.mock-grid{grid-template-columns:1fr}.hero,.paper{width:calc(100% - 14px);margin:7px auto}.hero,.paper{padding:28px 20px}.toc{width:calc(100% - 14px);grid-template-columns:1fr}h1{font-size:20vw}.sitebar{position:relative}}
+@page{size:A4;margin:11mm}@media print{body{background:white}body:before,.sitebar,.toc,.print-note{display:none}.hero,.paper{width:100%;margin:0;box-shadow:none;border:0;min-height:auto;page-break-after:always;padding:10mm 9mm;overflow:visible}.hero{height:270mm}.section{break-inside:auto}h2,h3{break-after:avoid}table{font-size:8.2pt;box-shadow:none}th,td{padding:5px;border-width:1px}p,li{font-size:9.2pt}.section-no{font-size:48pt}}
+
+h2 {
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.10; 
+  max-width: 900px;
+  letter-spacing: -.025em;
+}
+
+/* ===== ОБЛОЖКА INSEXSTORY ===== */
+.cover-hero{
+  min-height:88vh;
+  padding:48px 52px 38px;
+  display:block;
+  background:
+    linear-gradient(115deg,transparent 0 68%,rgba(213,43,30,.10) 68%),
+    var(--paper);
+}
+.cover-eyebrow{margin-bottom:10px}
+.cover-banner{
+  position:relative;
+  width:100%;
+  aspect-ratio:1920 / 620;
+  min-height:300px;
+  max-height:480px;
+  overflow:hidden;
+  background:#000;
+  border-top:3px solid #111;
+  border-bottom:3px solid #111;
+}
+.cover-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.cover-title{
+  position:absolute;
+  z-index:2;
+  left:5.2%;
+  top:50%;
+  transform:translateY(-51%);
+  display:flex;
+  flex-direction:column;
+  font-family:Oswald,Impact,sans-serif;
+  font-weight:700;
+  font-size:clamp(64px,8vw,126px);
+  line-height:.88;
+  letter-spacing:-.035em;
+  color:#fff;
+  text-transform:uppercase;
+  text-shadow:5px 5px 0 rgba(0,0,0,.28);
+}
+.cover-title span{display:block}
+.cover-bottom{padding:0 4px}
+.cover-bottom .sub{margin-top:22px}
+.cover-meta{margin-bottom:0}
+
+@media(max-width:700px){
+  .cover-hero{padding:28px 20px}
+  .cover-banner{min-height:210px;aspect-ratio:16 / 8}
+  .cover-art{object-position:64% center}
+  .cover-title{left:6%;font-size:clamp(48px,16vw,82px)}
+}
+@media print{
+  .cover-hero{height:270mm;min-height:270mm;padding:10mm 9mm}
+  .cover-banner{max-height:none;min-height:0}
+  .cover-title{font-size:68pt}
+}
+
+
+/* Бумажные линии остаются на фоне, но не накладываются на обложку и персонажа. */
+.cover-hero:after{z-index:0;}
+.cover-eyebrow,.cover-banner,.cover-bottom{position:relative;z-index:1;}
+
+
+/* ===== КЛИКАБЕЛЬНАЯ ГАЛЕРЕЯ ===== */
+.mock-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:26px;
+  margin:26px 0;
+}
+.mock{
+  min-height:0;
+  aspect-ratio:16/9;
+  border:3px solid #111;
+  background:#d9d4c9;
+  position:relative;
+  display:block;
+  overflow:hidden;
+  cursor:zoom-in;
+  box-shadow:8px 8px 0 #111;
+  text-decoration:none;
+  color:#111;
+  isolation:isolate;
+}
+.mock:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:repeating-linear-gradient(135deg,transparent 0 18px,rgba(0,0,0,.035) 18px 20px);
+  pointer-events:none;
+}
+.mock img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  z-index:1;
+  transition:transform .22s ease,filter .22s ease;
+}
+.mock.has-image:hover img{transform:scale(1.025)}
+.mock-num{
+  position:absolute;
+  z-index:4;
+  left:14px;
+  top:10px;
+  font-family:Oswald,Impact,sans-serif;
+  font-size:46px;
+  font-weight:700;
+  line-height:1;
+  color:#111;
+  background:rgba(238,234,224,.92);
+  padding:2px 8px 5px;
+  border:2px solid #111;
+}
+.mock-label{
+  position:absolute;
+  z-index:4;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  max-width:none;
+  text-align:left;
+  font-family:Oswald,Impact,sans-serif;
+  text-transform:uppercase;
+  font-size:25px;
+  line-height:1.05;
+  background:rgba(238,234,224,.94);
+  border:2px solid #111;
+  padding:10px 12px;
+}
+.mock small{
+  display:block;
+  font-family:Inter,Arial,sans-serif;
+  text-transform:none;
+  font-size:11px;
+  line-height:1.35;
+  margin-top:6px;
+  font-weight:700;
+}
+.mock-empty{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:70px 40px;
+  font-family:Oswald,Impact,sans-serif;
+  font-size:18px;
+  text-transform:uppercase;
+  color:#1119;
+}
+.mock-empty code{
+  display:block;
+  margin-top:8px;
+  font-family:Inter,Arial,sans-serif;
+  font-size:11px;
+  text-transform:none;
+}
+.mock:nth-child(3n+1){box-shadow:8px 8px 0 var(--red)}
+.mock:nth-child(3n+2){box-shadow:8px 8px 0 var(--yellow)}
+.mock:nth-child(3n){box-shadow:8px 8px 0 var(--blue)}
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  background:rgba(0,0,0,.92);
+  cursor:zoom-out;
+}
+.lightbox.open{display:flex}
+.lightbox img{
+  max-width:min(96vw,1800px);
+  max-height:92vh;
+  object-fit:contain;
+  border:3px solid #f2eee5;
+  box-shadow:14px 14px 0 rgba(213,43,30,.8);
+  background:#111;
+}
+.lightbox-close{
+  position:fixed;
+  top:18px;
+  right:24px;
+  z-index:1001;
+  border:2px solid #fff;
+  background:#111;
+  color:#fff;
+  font:700 26px/1 Oswald,Impact,sans-serif;
+  width:46px;
+  height:46px;
+  cursor:pointer;
+}
+.gallery-note{
+  font-size:12px;
+  font-weight:700;
+  color:var(--muted);
+  margin-top:-12px;
+}
+@media(max-width:700px){
+  .mock-grid{grid-template-columns:1fr}
+  .mock-label{font-size:20px}
+  .lightbox{padding:12px}
+}
+@media print{
+  .mock{cursor:default;break-inside:avoid}
+  .mock img{transition:none}
+  .lightbox{display:none!important}
+}
+
+
+/* ===== ПЕРСОНАЖИ ===== */
+.characters-shell{
+  position:relative; overflow:hidden; min-height:720px; padding:0!important;
+  background:#0a0a0b!important; color:#f5f1e8;
+}
+.characters-shell:before{
+  content:"CHARACTERS"; position:absolute; right:-20px; top:40px;
+  font:700 clamp(90px,14vw,220px)/.8 Oswald,Impact,sans-serif;
+  color:#ffffff0a; letter-spacing:-.05em; pointer-events:none;
+}
+.character-stage{
+  display:grid; grid-template-columns:150px minmax(0,1fr) minmax(340px,42%);
+  min-height:720px; position:relative;
+}
+.character-rail{
+  background:#111; border-right:3px solid #303033; padding:72px 22px 26px;
+  display:flex; flex-direction:column; align-items:center; gap:18px; z-index:4;
+}
+.character-thumb{
+  width:86px; height:86px; border-radius:50%; border:4px solid #555;
+  background:#202024; padding:0; overflow:hidden; cursor:pointer; position:relative;
+  transition:.18s transform,.18s border-color; color:#fff;
+}
+.character-thumb:hover{transform:scale(1.06)}
+.character-thumb.active{border-color:#55e8df; box-shadow:0 0 0 5px #55e8df22}
+.character-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.character-thumb .initials{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font:700 28px Oswald,Impact,sans-serif;background:#29292d;
+}
+.character-main{
+  position:relative; z-index:2; padding:90px 40px 50px 54px;
+  display:flex; flex-direction:column; justify-content:center;
+  background:linear-gradient(90deg,#090909 0%,#090909 58%,#090909d9 100%);
+}
+.character-kicker{
+  font:700 13px Inter,Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;
+  color:#55e8df;margin-bottom:14px;
+}
+.character-name{
+  margin:0;font:700 clamp(58px,7vw,112px)/.82 Oswald,Impact,sans-serif;
+  text-transform:uppercase;letter-spacing:-.04em;color:#f5f1e8;
+}
+.character-role{
+  margin:18px 0 34px; display:inline-block; width:max-content; max-width:100%;
+  padding:7px 12px; border-left:7px solid var(--red); background:#ffffff0d;
+  font:700 17px Inter,Arial,sans-serif;text-transform:uppercase;
+}
+.character-quote{
+  font:700 clamp(24px,2.4vw,38px)/1.25 Oswald,Impact,sans-serif;
+  text-transform:uppercase; max-width:720px; margin:0 0 26px;
+}
+.character-desc{max-width:700px;font-size:16px;line-height:1.65;color:#d1d1d4;margin:0}
+.character-facts{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;padding:0;list-style:none;
+}
+.character-facts li{
+  border:1px solid #777;padding:7px 10px;font:700 11px Inter,Arial,sans-serif;
+  text-transform:uppercase;background:#ffffff08;
+}
+.character-art-wrap{
+  position:relative;z-index:3;min-height:720px;
+  background:linear-gradient(135deg,#19191d,#050505);
+  overflow:hidden;display:flex;align-items:flex-end;justify-content:center;
+}
+.character-art-wrap:before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 55% 42%,#b145bc35 0 18%,transparent 48%);
+}
+.character-art{
+  position:relative;z-index:2;width:100%;height:100%;min-height:720px;
+  object-fit:contain;object-position:center bottom;display:none;
+}
+.character-art.loaded{display:block}
+.character-placeholder{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:50px;color:#ffffff77;z-index:1;
+  font:700 21px/1.35 Oswald,Impact,sans-serif;text-transform:uppercase;
+}
+.character-placeholder code{
+  display:block;margin-top:12px;font:600 11px Inter,Arial,sans-serif;
+  text-transform:none;color:#ffffff66;
+}
+.character-nav{
+  position:absolute;right:28px;bottom:24px;z-index:6;display:flex;gap:8px;
+}
+.character-arrow{
+  width:52px;height:52px;border:2px solid #f5f1e8;background:#0b0b0c;color:#fff;
+  cursor:pointer;font:700 28px/1 Oswald,Impact,sans-serif;
+}
+.character-arrow:hover{background:#f5f1e8;color:#111}
+.character-counter{
+  position:absolute;right:28px;top:24px;z-index:6;
+  font:700 18px Oswald,Impact,sans-serif;color:#fff;
+}
+.character-help{
+  position:absolute;left:174px;bottom:18px;z-index:6;color:#ffffff66;
+  font:600 10px Inter,Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;
+}
+@media(max-width:900px){
+  .character-stage{grid-template-columns:1fr;display:block}
+  .character-rail{height:auto;padding:18px;flex-direction:row;justify-content:center;border-right:0;border-bottom:3px solid #303033}
+  .character-thumb{width:64px;height:64px}
+  .character-main{padding:46px 26px 30px}
+  .character-art-wrap,.character-art{min-height:560px}
+  .character-help{display:none}
+}
+@media print{
+  .characters-shell{break-inside:avoid}
+  .character-rail,.character-nav,.character-help{display:none}
+  .character-stage{grid-template-columns:58% 42%}
+  .character-main{padding:14mm 8mm}
+  .character-art-wrap,.character-art{min-height:150mm}
+}
+
+
+/* ===== PLAYABLE WEB DEMO ===== */
+.demo-stage{margin:28px 0 10px;border:3px solid #111;background:#111;position:relative;overflow:hidden;box-shadow:9px 9px 0 var(--pink)}
+.demo-stage:before{content:"PLAYABLE BUILD";position:absolute;z-index:3;top:15px;right:-38px;transform:rotate(8deg);background:var(--yellow);border:2px solid #111;padding:7px 48px;font:800 11px/1 Inter,Arial,sans-serif;letter-spacing:.12em}
+.demo-cover{min-height:330px;padding:48px 42px 36px;color:#f4f0e8;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(110deg,#090909f2,#090909b8 58%,#09090980),radial-gradient(circle at 82% 20%,#e91e8b55,transparent 32%),#161619}
+.demo-eyebrow{font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px}
+.demo-cover h3{margin:0 0 12px;color:#fff;font:700 clamp(38px,6vw,76px)/.9 Oswald,Impact,sans-serif;text-transform:uppercase;max-width:780px}
+.demo-cover p{color:#ddd;max-width:700px;margin:0 0 22px;font-weight:700}
+.demo-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.demo-play{border:2px solid #111;background:var(--pink);color:#fff;padding:15px 22px;cursor:pointer;font:800 16px/1 Inter,Arial,sans-serif;text-transform:uppercase;box-shadow:5px 5px 0 var(--yellow)}
+.demo-play:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--yellow)}
+.demo-meta{max-width:430px;font-size:11px;font-weight:700;color:#bbb}
+.demo-modal{position:fixed;inset:0;z-index:9999;display:none;background:#050505f7;padding:16px}
+.demo-modal.is-open{display:flex;flex-direction:column}
+.demo-toolbar{flex:0 0 48px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;font:800 12px Inter,Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.demo-toolbar-actions{display:flex;gap:8px}
+.demo-toolbar button{border:1px solid #666;background:#1b1b1d;color:#fff;padding:9px 12px;cursor:pointer;font:800 11px Inter,Arial,sans-serif;text-transform:uppercase}
+.demo-toolbar button:hover{background:var(--pink);border-color:var(--pink)}
+.demo-frame-wrap{flex:1;min-height:0;border:2px solid #444;background:#090909}
+#demoFrame{display:block;width:100%;height:100%;border:0;background:#090909}
+body.demo-open{overflow:hidden}
+@media(max-width:700px){.demo-cover{min-height:300px;padding:38px 22px 28px}.demo-stage:before{display:none}.demo-modal{padding:7px}.demo-toolbar-title{display:none}}
+@media print{.demo-stage,.demo-modal{display:none!important}}
+
+
+/* ===== DEMO RESPONSIVE FIX / TEST ===== */
+.demo-modal{
+  width:100vw !important;
+  height:100dvh !important;
+  max-width:none !important;
+  max-height:none !important;
+}
+.demo-frame-wrap{
+  position:relative !important;
+  width:100% !important;
+  height:auto !important;
+  flex:1 1 auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+}
+#demoFrame{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  min-width:100% !important;
+  min-height:100% !important;
+  display:block !important;
+}
+
+
+/* ===== READABILITY: larger presentation text ===== */
+.paper p { font-size: 18px; line-height: 1.62; max-width: 1100px; }
+.paper li { font-size: 17px; line-height: 1.55; }
+.paper table { font-size: 15px; line-height: 1.45; }
+.paper th { font-size: 16px; line-height: 1.35; }
+.paper th, .paper td { padding: 12px 13px; }
+.paper .table-wrap { margin-top: 28px; }
+.gallery-note { font-size: 14px; }
+
+@media print {
+  .paper p, .paper li { font-size: 10.2pt; }
+  .paper table { font-size: 9pt; }
+  .paper th { font-size: 9.4pt; }
+}
+
+</style></head><body>
+<div class="sitebar"><div class="brand">INSEXSTORY // ПРЕЗЕНТАЦИЯ</div><div><a href="#contents">Содержание</a> &nbsp; <a href="javascript:window.print()">Печать / PDF</a></div></div>
+<header class="hero cover-hero">
+  <div class="eyebrow cover-eyebrow">Издательская презентация / рабочая версия</div>
+
+  <div class="cover-banner">
+    <img class="cover-art" src="steam-cover1.png" alt="Паучиха - ключевой персонаж InsexStory">
+    
+  </div>
+
+  <div class="cover-bottom">
+    <div class="sub">Взрослая трэш-комедия</div>
+    <div class="tags">
+      <span class="tag">Визуальная новелла</span>
+      <span class="tag">Tower defense</span>
+      <span class="tag">Clash Royal - like</span>
+      <span class="tag">Пазлы</span>
+      <span class="tag">ASMR-очистка</span>
+      <span class="tag">Поиск предметов</span>
+    </div>
+    <div class="logline">За 48 часов безответственный студент и его соседка должны остановить мутацию в закрытом летнем кампусе. В середине истории игрок выбирает сторону - и вместе с сюжетом меняется основной игровой процесс второй половины игры.</div>
+    <p class="cover-meta"><b>ПК • 2D • Одиночная игра • 18+ • Unity 6 + Naninovel</b></p>
+  </div>
+</header>
+<nav class="toc" id="contents"><a href="#s1"><span>01</span>Коротко о проекте</a><a href="#s2"><span>02</span>Формат, жанр и аудитория</a><a href="#s3"><span>03</span>Ориентиры и коммерческий контекст</a><a href="#s4"><span>04</span>Синопсис</a><a href="#s5"><span>05</span>Из чего состоит игра: игровой цикл</a><a href="#s6"><span>06</span>Визуальные материалы проекта</a><a href="#s7"><span>07</span>Демонстрационные материалы</a><a href="#s8"><span>08</span>Геймплейные тонкости</a><a href="#s9"><span>09</span>Оценка объёма и сроков производства</a><a href="#s11"><span>11</span>Кто будет заниматься</a><a href="#s12"><span>12</span>Пару слов для издателя</a><a href="#s14"><span>14</span>Итог</a></nav>
+<section class="paper section" id="s1">
+<div class="section-no">01</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Коротко о проекте</h2><div class="rule"></div><p>InsexStory - сюжетная 2D-игра для взрослой аудитории, которая соединяет визуальную новеллу с активными мини-играми. Первая половина прохождения классическая: диалоги, прохождение по карте, получение рецептов для прокачки, зельеварение и tower defense. После центрального выбора структура расходится: ветка Соседки продолжает зельеварение и TD, а ветка Паучихи переходит в наступательный режим в духе Clash Royale.</p><div class="table-wrap"><table><thead><tr><th>Главная особенность для издателя. Ключевой выбор меняет не только диалоги, романтическую линию и финал, но и основной игровой жанр второй половины. Это делает вторую ветку полноценной причиной для повторного прохождения, а не просто альтернативной веткой текста.</th></tr></thead><tbody></tbody></table></div>
+</section><section class="paper section" id="s2">
+<div class="section-no">02</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Формат, жанр и аудитория</h2><div class="rule"></div><div class="table-wrap"><table><thead><tr><th>Визуал</th><th>Полностью 2D: персонажные изображения, фоны, интерфейс, 2D-бойцы и эффекты.</th></tr></thead><tbody><tr><td>Жанр</td><td>Взрослая визуальная новелла / трэш-комедия + tower defense + наступательный режим в духе Clash Royale + зельеварение + лёгкие микро-игры.</td></tr><tr><td>Платформа</td><td>ПК; базовая коммерческая площадка - Steam. Возможны другие магазины для ПК. В случае успеха проекта - перенос на другие платформы.</td></tr><tr><td>Аудитория</td><td>Мужчины 18-35 лет, которым нужны не только adult сцены, но и юмор, персонажи, выборы и полноценные игровые механики.</td></tr><tr><td>Сессия</td><td>Сюжетная кампания с двумя существенно различающимися ветками и мотивацией к повторному прохождению.</td></tr><tr><td>Тон</td><td>Абсурдная студенческая комедия. Биокатастрофа формата фильма "Факультет". Эротика. Намеренно несерьёзная подача.</td></tr></tbody></table></div>
+</section><section class="paper section" id="s3">
+<div class="section-no">03</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Ориентиры и коммерческий контекст</h2><div class="rule"></div><div class="table-wrap"><table><thead><tr><th>Ориентир</th><th>Что берём</th><th>Рыночный ориентир</th><th>Роль в презентации</th></tr></thead><tbody><tr><td>Femboy Futa House</td><td>Структуру: взрослая комедия + визуальная новелла + мини-игры</td><td>Цена $5-10; заметные продажи, заметный пример в нише взрослых новелл</td><td>Показывает жизнеспособность взрослой игры, где эротика соединена с понятной игровой системой. Заимствование мини-игры с поиском предметов.</td></tr><tr><td>Harry potter 6</td><td>Механику зельеварения, но переносим её в 2D формат и упрощаем</td><td>Полюбившаяся многим механика, которая органично вплетается в сюжет игры</td><td>Ориентир на популярность сеттинга и механики смешивания ради результата.</td></tr>
+<tr><td>Towerful Defense Core</td><td>Компактный небольшой независимый TD, короткие циклы и читаемая боевая система.</td><td>Не очень распространённая система в сегменте взрослых игр. Сделана с упрощениями, чтобы было интересно отвлечься на ненапряжный гейплей при этом короткие сессии не заставят скучать игрока</td><td>Ориентир по масштабу: небольшой TD, который интересно играть, но который не заставляет скучать.</td></tr>
+<tr><td>Clash Royale</td><td>Вертикальная арена, наступление снизу вверх, выбор состава бойцов и темп боя.</td><td>Очень популярная условно-бесплатная игра</td><td>Чистый игровой процессный референс для ветки Паучихи.</td></tr>
+<tr><td>KOTAMON: My Sis Found A Super-Rare Card In Her Cereal Box, So I Became A Garbage Man To Find The Entire Collection And Earn $1,000,000</td><td>Мини-игры по сбору кусочков рецептов и ASMR-очистка</td><td>Довольно хорошие продажи</td><td>Чистый игровой процессный референс для микро-игр.</td></tr>
+</tbody></table></div>
+</section><section class="paper section" id="s4">
+<div class="section-no">04</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Синопсис</h2><div class="rule"></div><p>Брат соседки главного героя - молодой биохимик, который пытается создать экспериментальный феромонный стимулятор. Считая формулу законченной, он приносит препарат на студенческую вечеринку у бассейна и случайно проливает его в воду. Формуле не хватает ключевого катализатора - мужской спермы, поэтому вместо ожидаемого эффекта начинается мутация: девушки превращаются в антропоморфных насекомых, сохраняя черты своих характеров.</p><p>Создатель препарата запирается в лабораторном корпусе. Главный герой, проспавший катастрофу после того, как напился на выпускном 2 дня назад, оказывается единственным доступным источником спермы для химии его Соседки. У героев есть всего 48 часов до возвращения университетских служб.</p><p>В первой половине ГГ помогает Соседке пробраться через кампус, чтобы освободить её брата. Во время освобождения появляется Паучиха - мутировавшая молодая преподавательница химии - и ставит под сомнение саму цель «вылечить всех» так как не верит, что эффект можно обратить, да и не хочет, так как превращение избавило её от диабета и плохого зрения. Вместо этого она хочет создать препарат, который позволит сохранить их разум, и позволит управлять своим телом, чтобы не было бесконтрольных мутаций.</p><p>После выбора игрок либо помогает Соседке создать безопасный, как они думают, способ обратить мутацию и вернуть девушкам возможность выбора, либо остаётся с Паучихой и ищет способ стабилизировать новую форму жизни.</p>
+</section><section class="paper section" id="s5">
+<div class="section-no">05</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Из чего состоит игра: игровой цикл</h2><div class="rule"></div><h3>Общий цикл первой половины</h3><div class="flow">Визуальная новелла → исследование → зельеварение → tower defense → сюжетная / adult награда → новая зона</div><p>Диалоги задают цель. Прохождение в формате микро-игр открывать рецепты для TD-сегмента. Зельеварение определяет доступные боевые ресурсы, а уровень рецепта определяет мощность этих башен. После победы история переходит к следующей зоне.</p><h3>Ветка Соседки</h3><ul><li>Зельеварение: физическое переливание цветных жидкостей, соблюдение пропорций, возможность варить неизвестные рецепты, эксперементировать. Таким образом, если игрок знает как сделать мощное зелье - он может его сварить сразу, чтобы облегчить второе прохождени, и получить ачивку "Хайзенберг"</li><li>Классический Tower Defense: заранее определённые позиции под распылители, которые нужно расчистить за энергию и время.</li><li>Нет монет за убийства: экономика строится на времени, энергии героя и запасе подготовленных растворов\башен.</li><li>Один приготовленный раствор даёт ограниченный запас башен; распылители имеют конечный боезапас.</li><li>Игрок может усиливать работу распылителя кликами и в критический момент перегружать его, жертвуя башней ради взрыва по площади. Это добавлено для того, чтобы TD был более интерактивным и не вызывал скуку</li></ul><h3>Ветка Паучихи</h3><ul><li>Зельеварение убирается: акцент смещается на микро-игры и развитие отношений с паучихой.</li><li>Вертикальная арена: бойцы движутся снизу вверх и прорывают укрепления Соседки и её брата.</li><li>Перед/во время боя игрок выбирает юнитов, расходуя восстанавливающийся ресурс Паучихи (Сок, который выделяется во время секса с ГГ).</li><li>Сбоку от поля остаётся отдельная зона под анимацию секса ГГ и Паучихи; смена позы/состояния будет либо давать усиления юнитам, либо ускорять выделение сока у паучихи.</li><li>Здесь используются те же изображения юнитов, что и в TD: в соседской ветке как враги, в паучьей - как армия игрока.</li></ul>
+</section>
+<section class="paper section characters-shell" id="characters">
+  <div class="character-stage">
+    <aside class="character-rail" id="characterRail" aria-label="Персонажи"></aside>
+    <div class="character-main">
+      <div class="character-kicker" id="characterKicker">01 / Основной персонаж</div>
+      <h2 class="character-name" id="characterName">Соседка</h2>
+      <div class="character-role" id="characterRole">Напарница героя • Сестра химика • Основной персонаж ветки излечения</div>
+      <p class="character-quote" id="characterQuote">«Не дрейфь, салага! Нам ещё нужно пол кампуса твоей спермой залить!»</p>
+      <p class="character-desc" id="characterDesc"></p>
+      <ul class="character-facts" id="characterFacts"></ul>
+    </div>
+    <div class="character-art-wrap">
+      <div class="character-placeholder" id="characterPlaceholder"></div>
+      <img class="character-art" id="characterArt" alt="">
+      <div class="character-counter" id="characterCounter">01 / 03</div>
+      <div class="character-nav">
+        <button class="character-arrow" id="characterPrev" type="button" aria-label="Предыдущий персонаж">←</button>
+        <button class="character-arrow" id="characterNext" type="button" aria-label="Следующий персонаж">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paper section" id="s6">
+<div class="section-no">06</div><div class="section-kicker">INSEXSTORY / МАТЕРИАЛЫ ПРОЕКТА</div>
+<h2>Визуальные материалы проекта</h2><div class="rule"></div>
+<p>Ниже продемонстрированы игровые кадры и макеты. <br>По мере готовности проекта плейсхолдеры будут заменены настоящими изображениями.</p>
+<p class="gallery-note">Изображения кликабельны</p>
+<div class="mock-grid">
+<a class="mock gallery-item" href="images/01-vn.jpg" data-full="images/01-vn.jpg" aria-label="Открыть: Визуальная новелла">
+  <span class="mock-empty">Место для изображения<code>images/01-vn.jpg</code></span>
+  <img src="images/01-vn.jpg" alt="Визуальная новелла" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">01</span>
+  <span class="mock-label">Визуальная новелла<small>Фон. Персонаж. Диалоговое окно. Кнопки управления.</small></span>
+</a>
+<a class="mock gallery-item" href="images/02-lab.jpg" data-full="images/02-lab.jpg" aria-label="Открыть: Исследование лаборатории">
+  <span class="mock-empty">Место для изображения<code>images/02-lab.jpg</code></span>
+  <img src="images/02-lab.jpg" alt="Исследование лаборатории" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">02</span>
+  <span class="mock-label">Микро-интерактивы<small>Маленькие мини-игры на 10-30 секунд. Поиск предметов, пазл, чистка и т.п.</small></span>
+</a>
+<a class="mock gallery-item" href="images/03-potion.jpg" data-full="images/03-potion.jpg" aria-label="Открыть: Зельеварение">
+  <span class="mock-empty">Место для изображения<code>images/03-potion.jpg</code></span>
+  <img src="images/03-potion.jpg" alt="Зельеварение" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">03</span>
+  <span class="mock-label">Основная игра - Зельеварение<small>Котёл, жидкости, реагенты, открытые рецепты и UI для контроля.</small></span>
+</a>
+<a class="mock gallery-item" href="images/04-td.jpg" data-full="images/04-td.jpg" aria-label="Открыть: Защита Соседки">
+  <span class="mock-empty">Место для изображения<code>images/04-td.jpg</code></span>
+  <img src="images/04-td.jpg" alt="Защита Соседки" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">04</span>
+  <span class="mock-label">Основная игра - Tower Defense<small>Маршрут насекомых, точки расчистки, распылители и энергия героя.</small></span>
+</a>
+<a class="mock gallery-item" href="images/05-choice.jpg" data-full="images/05-choice.jpg" aria-label="Открыть: Выбор стороны">
+  <span class="mock-empty">Место для изображения<code>images/05-choice.jpg</code></span>
+  <img src="images/05-choice.jpg" alt="Выбор стороны" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">05</span>
+  <span class="mock-label">Выбор стороны в сюжете<small>Соседка и Паучиха. Один сюжетный выбор ведёт к двум разным игровым веткам.</small></span>
+</a>
+<a class="mock gallery-item" href="images/06-reverse-td.jpg" data-full="images/06-reverse-td.jpg" aria-label="Открыть: Наступление Паучихи">
+  <span class="mock-empty">Место для изображения<code>images/06-reverse-td.jpg</code></span>
+  <img src="images/06-reverse-td.jpg" alt="Наступление Паучихи" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">06</span>
+  <span class="mock-label">Clash Royale в руте Паучихи<small>Вертикальная арена, выбор бойцов, ресурс Паучихи и боковая зона анимации.</small></span>
+</a>
+<a class="mock gallery-item" href="images/07-adult-scene.jpg" data-full="images/07-adult-scene.jpg" aria-label="Открыть: Взрослая сцена">
+  <span class="mock-empty">Место для изображения<code>images/07-adult-scene.jpg</code></span>
+  <img src="images/07-adult-scene.jpg" alt="Взрослая сцена" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">07</span>
+  <span class="mock-label">Пример adult контента<small>CG-арт adult сцены.</small></span>
+</a>
+<a class="mock gallery-item" href="images/08-adult-scene.jpg" data-full="images/08-adult-scene.jpg" aria-label="Открыть: Взрослая CG-сцена">
+  <span class="mock-empty">Место для изображения<code>images/08-adult-scene.jpg</code></span>
+  <img src="images/08-adult-scene.jpg" alt="Взрослая CG-сцена" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <span class="mock-num">08</span>
+  <span class="mock-label">Пример adult контента<small>Дополнительный CG-арт adult сцены.</small></span>
+</a>
+</div>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
+  <img id="lightbox-image" alt="">
+</div>
+</section><section class="paper section" id="s7">
+<div class="section-no">07</div><div class="section-kicker">INSEXSTORY / ДЕМОНСТРАЦИЯ</div>
+<h2>Демонстрационные материалы</h2><div class="rule"></div>
+<p>Для знакомства с проектом используется компактный вертикальный срез на 10–20 минут. <br>Web-версию можно запустить прямо из презентации. Портитивный билд для Windows доступен по <a href="https://drive.google.com/drive/folders/18fbXv2-zl28VaUhq6hkd6bohOHfSqcJx">ссылке</a>.</p>
+
+<div class="demo-stage">
+  <div class="demo-cover">
+    <div class="demo-eyebrow">Unity Web • Играбельный прототип</div>
+    <h3>Запустить InsexStory</h3>
+    <p>Текущая браузерная сборка проекта. Она демонстрирует уже работающие игровые системы и используется как технический вертикальный срез.</p>
+    <div class="demo-actions">
+      <button class="demo-play" id="demoPlay" type="button">▶ Запустить демо</button>
+      <div class="demo-meta">Первый запуск может занять некоторое время: браузер загрузит данные игры и WebAssembly. После запуска демо можно развернуть на весь экран.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="demo-modal" id="demoModal" aria-hidden="true">
+  <div class="demo-toolbar">
+    <div class="demo-toolbar-title">InsexStory • Web Prototype</div>
+    <div class="demo-toolbar-actions">
+      <button id="demoFullscreen" type="button">На весь экран</button>
+      <button id="demoClose" type="button">Закрыть ×</button>
+    </div>
+  </div>
+  <div class="demo-frame-wrap">
+    <iframe id="demoFrame" title="InsexStory Web Demo" allow="fullscreen; autoplay" allowfullscreen></iframe>
+  </div>
+</div>
+</section><section class="paper section" id="s8">
+<div class="section-no">08</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Геймплейные тонкости</h2><div class="rule"></div><h3>Интерактивность adult сцен</h3><p>Оптимальный для команды из двух человек вариант - не превращать каждую сцену в отдельный симулятор. В ветке Паучихи интерактивность используется как часть геймплея для получаения кредитов для спавна юнитов и их усилениями.</p><h3>Прогрессия</h3><ul><li>Энергия героя - отдельный ресурс только для защиты; Постоянно восстанавливается и расходуется на расчистку позиций/действия.</li><li>Соки паучихи - отдельный ресурс только для наступательного режима; Постоянно восстанавливается и расходуется на вызов бойцов. Можно ускорять в зависимости от выбранной позы секса с паучихой.</li><li>Рецепты - знания игрока. Точные пропорции открываются через дневник брата; после нескольких успешных варок, рецепт получает возможность автоматической варки.</li><li>Новая игра+: знания рецептов можно использовать как долгосрочную прогрессию - опытный игрок быстрее проходит ранние этапы, если помнит пропорции.</li><li>Сюжетные улучшения: игрок может запомнить рецепты мощных типов распылителей и использовать их в начале игры, чтобы быстрее продвинутся по сюжету.</li></ul><h3>Дополнительные микро-механики</h3><ul><li>Поиск предметов на локациях.</li> <li>Cбор разорванных страниц как пазл.</li>  <li>Медитативная ASMR-очистка страниц</li> <li>Соединение электрических цепей (в демо отсутсвует).</li></ul></p>
+</section><section class="paper section" id="s9">
+<div class="section-no">09</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Оценка объёма и сроков производства</h2><div class="rule"></div><p>Ниже - рабочая оценка для презентации. Она предполагает небольшую команду разработчиков, переиспользование материалов между ветками и ограниченное число уникальных анимаций. Временные рамки расписаны с учётом работы одного разработчика и одного художника.</p><div class="table-wrap"><table><thead><tr><th>Блок</th><th>Объём</th><th>Оценка производства</th><th>Комментарий</th></tr></thead><tbody><tr><td>Главные персонажи</td><td>7-10 ключевых дизайнов; около 35-50 эмоций/вариантов суммарно</td><td>3-7 дней на персонажа</td><td>ГГ появляется только в сценах ; Основной объём - Соседка, Паучиха, и прочие девушки.</td></tr><tr><td>Юнити. Аналоги чиби</td><td>4-8 типов</td><td>1-3 дня на юнита.</td><td>Изображения переиспользуются как враги и союзные бойцы. (Одинаковые анимации покоя)</td></tr><tr><td>Фоны</td><td>10-14 кампусных локаций + вариации состояния (сломаны\целы)</td><td>7-10 дней на арт в среднем</td><td>Общежитие, лаборатория, библиотека, бассейн, коридоры и т.д.</td></tr><tr><td>Иллюстрации / adult сцены</td><td>10-14 ключевых сцен, часть с вариантами/анимацией</td><td>8-12 дней на арт (Может больше, если сложный)</td><td>Самая дорогая и вариативная часть графики.</td></tr><tr><td>Интерфейс / эффекты / иконки</td><td>Интерфейс визуальной новеллы и мини игр</td><td>В общем 4-8 недель. Точно сказать сложно.</td></tr><tr><td>Анимация</td><td>Бойцы, эффекты, сцены</td><td>1-2 недели на анимацию. Точнее сказать сложно. </td><td>Сильно зависит от Spine или покадровой схемы.</td></tr><tr><td>Музыка / звуковые эффекты</td><td>6-10 треков + набор эффектов</td><td>6-10 недель, предварительная оценка</td><td>Понадобится помощь звукорежиссёра</td></tr><tr><td>Локализация / тестирование / материалы страницы магазина</td><td>английский / русский, тестирование, капсулы, трейлерные материалы</td><td>12-16 недель, предварительная оценка</td><td>Нужна помощь команды локализаторов на английский</td></tr></tbody></table></div><div class="flow">Целевой ориентир: вертикальный срез - 2-4 месяца <br>Полный цикл разработки - 12-18 месяцев</div><p>Сроки в таблице отражают трудоёмкость отдельных категорий и не суммируются напрямую: графика, программная часть, анимация и звук могут частично производиться параллельно. Наибольшая неопределённость связана с количеством взрослых сцен, сложностью анимации и итоговым объёмом контента. После вертикального среза оценка уточняется.</p><p>Цену самой игры логично тестировать в диапазоне $4.99-9.99: это соответствует масштабу независимого проекта и соседствует с ценами части взрослых визуальных новелл и гибридных игр. Финальную цену лучше фиксировать после определения длительности кампании и количества контента.</p>
+</section><section class="paper section" id="s11">
+<div class="section-no">11</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Кто будет заниматься</h2><div class="rule"></div><p>Проект изначально проектируется под небольшую команду.
+Примерная таблица на данный момент:</p><div class="table-wrap"><table><thead><tr><th>Роль</th><th>Зона ответственности</th><th>Что можно отдавать наружу</th></tr></thead><tbody><tr><td>Unity-разработчик / геймдизайн</td><td>Unity 6, Naninovel, интеграция визуальной новеллы и мини-игр, защита и наступательный режим, логика интерфейса, сохранения, сборки, технический дизайн.</td><td>Точечная проверка кода, тестирование, перенос на другие платформы при необходимости.</td></tr><tr><td>Художник / визуальное направление</td><td>Персонажи, иллюстрации, фоны, стилистика интерфейса, игровые 2D-материалы, подготовка контента.</td><td>Часть фонов, анимация, визуальные эффекты, оформление страницы магазина при росте объёма.</td></tr><tr><td>Аутсорс по необходимости</td><td>Музыка / звуковые эффекты, локализация/редактура, тестирование, трейлер.</td><td>Подключается ближе к вертикальному срезу и релизу.</td></tr></tbody></table></div>
+</section><section class="paper section" id="s12">
+<div class="section-no">12</div><div class="section-kicker">INSEXSTORY / ДЛЯ ИЗДАТЕЛЯ</div>
+<h2>Пару слов для издателя</h2><div class="rule"></div>
+<p><b>Мы понимаем что InsexStory затрагивает непопулярную тему с девушками-инсектоидами.</b> <br>Однако, мы считаем, что при должной художественной реализации это может выделить игру на фоне конкуретнов. Кроме того, геймплейная и сюжетная состовляющая тоже играет большую роль, поэтому и и обращаемся за помощью к такому изрателю как TopHouse Publishing, так как считаем качество изданных вами игр самым высоким в adult сегменте. 
+<p>Являясь по-сути инди командой из двух человек, мы закладываем довольно длинный срок разработки. Основной способ удержать этот объём - переиспользование: мутанты работают в двух противоположных игровых режимах, а локации, интерфейс и часть эффектов используются в обеих ветках.</p>
+<p>Главная производственная переменная - количество уникальных иллюстраций и анимаций. Поэтому объём взрослых сцен и сложность анимации фиксируются заранее, а расширение контента рассматривается только после готового вертикального среза.</p>
+<p>Ключевое отличие проекта, кроме выбранной темы - сюжетная развилка, которая меняет в корне игровой процесс. Ветка Соседки сохраняет зельеварение и Tower Defense, а ветка Паучихи превращается в наступательный режим.</p>
+<p>Модель распространения - разовая покупка без внутриигровых платежей. Дополнительные материалы, музыкальный альбом или альбом иллюстраций могут рассматриваться позднее, если основной релиз подтвердит спрос.</p>
+</section><section class="paper section" id="s14">
+<div class="section-no">14</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
+<h2>Итог</h2><div class="rule"></div><div class="table-wrap"><table><thead><tr><th>InsexStory Небольшая взрослая 2D-игра, в которой сюжетный выбор действительно меняет то, как игрок будет играть. Первая половина знакомит с персонажами и системами, а вторая переворачивает сюжет и геймплей, при этом не сбавляя в количестве adult контента, юмора и интересных мини-игр.</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<script>
+(() => {
+  const box = document.getElementById('lightbox');
+  const full = document.getElementById('lightbox-image');
+  if (!box || !full) return;
+
+  document.querySelectorAll('.gallery-item').forEach(card => {
+    card.addEventListener('click', e => {
+      const img = card.querySelector('img');
+      if (!card.classList.contains('has-image') || !img || img.style.display === 'none') {
+        e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      full.src = card.dataset.full || img.src;
+      full.alt = img.alt || '';
+      box.classList.add('open');
+      box.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const close = () => {
+    box.classList.remove('open');
+    box.setAttribute('aria-hidden','true');
+    full.removeAttribute('src');
+    document.body.style.overflow = '';
+  };
+
+  box.addEventListener('click', close);
+  box.querySelector('.lightbox-close').addEventListener('click', e => {
+    e.stopPropagation();
+    close();
+  });
+  full.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && box.classList.contains('open')) close();
+  });
+})();
+</script>
+
+
+<script>
+/* Добавление персонажа:
+   1. Положите прозрачный PNG в папку characters.
+   2. Скопируйте один объект ниже и измените поля.
+   Больше ничего в HTML менять не нужно. */
+const characters = [
+  {
+    name: "Соседка",
+    role: "Человек • Сестра химика • Основной персонаж ветки излечения",
+    quote: "«Не дрейфь, салага! Нам ещё нужно пол кампуса твоей спермой залить!»",
+    description: "Соседка главного героя и главный двигатель первой половины истории. Вытаскивает ГГ из комнаты, и вводит в мир. Практичная, язвительная и достаточно безответственная, чтобы отлично дополнять героя.",
+    facts: ["Человек", "Союзник", "Зельеварение", "Ветка излечения"],
+    art: "characters/neighbor.png",
+    thumb: "characters/neighbor-thumb.png"
+  },
+  {
+    name: "Паучиха",
+    role: "Мутант • Бывшая училка химии • Основной персонаж ветки принятия",
+    quote: "«Трахаей меня, чтобы мои соки питали силой всех этих девушек...»",
+    description: "Мутировавшая молодая преподавательница химии и центральная фигура второй сюжетной ветки. Не считает новую форму существования болезнью и предлагает герою другой выход.",
+    facts: ["Паук", "Химик", "Clash Royal - like","Ветка принятия"],
+    art: "characters/spider.png",
+    thumb: "characters/spider-thumb.png"
+  },
+  {
+    name: "Тараканы",
+    role: "Мутант • Обитательницы общаги",
+    quote: "«Быстрей быстрей... Слижи с него сперму!»",
+    description: "Девушки с тусовки, которые стали похожи на тараканов. Близняшки, затворницы и извращенки. Возможно, из-за жажды секса им пришлось заниматься этим друг с другом.",
+    facts: ["Тараканы", "Общага", "Шустрые", "Второстепенный персонаж"],
+    art: "characters/cockroach.png",
+    thumb: "characters/cockroach-thumb.png"
+  },
+  {
+    name: "Моль",
+    role: "Мутант • Обитательница библиотеки",
+    quote: "«Тише... Пара новых рук - не повод орать в библиотеке...»",
+    description: "Одна из девушек, изменённых на тусовке. Любительница книг, журналов и фанфиков. После мутации стала больше читать порно.",
+    facts: ["Моль", "Библиотека", "Тихоня", "Второстепенный персонаж"],
+    art: "characters/MOL.png",
+    thumb: "characters/MOL-thumb.png"
+  }
+];
+
+(() => {
+  let current = 0;
+  const rail = document.getElementById("characterRail");
+  const art = document.getElementById("characterArt");
+  const placeholder = document.getElementById("characterPlaceholder");
+  const name = document.getElementById("characterName");
+  const role = document.getElementById("characterRole");
+  const quote = document.getElementById("characterQuote");
+  const desc = document.getElementById("characterDesc");
+  const facts = document.getElementById("characterFacts");
+  const kicker = document.getElementById("characterKicker");
+  const counter = document.getElementById("characterCounter");
+
+  const pad = n => String(n).padStart(2,"0");
+
+  characters.forEach((c,i) => {
+    const b = document.createElement("button");
+    b.className = "character-thumb";
+    b.type = "button";
+    b.title = c.name;
+    b.innerHTML = `<span class="initials">${pad(i+1)}</span><img src="${c.thumb}" alt="${c.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">`;
+    b.addEventListener("click", () => render(i));
+    rail.appendChild(b);
+  });
+
+  function render(i){
+    current = (i + characters.length) % characters.length;
+    const c = characters[current];
+    [...rail.children].forEach((x,n)=>x.classList.toggle("active",n===current));
+    name.textContent = c.name;
+    role.textContent = c.role;
+    quote.textContent = c.quote;
+    desc.textContent = c.description;
+    facts.innerHTML = c.facts.map(x=>`<li>${x}</li>`).join("");
+    kicker.textContent = `${pad(current+1)} / Персонаж`;
+    counter.textContent = `${pad(current+1)} / ${pad(characters.length)}`;
+    placeholder.innerHTML = `Место для прозрачного спрайта<code>${c.art}</code>`;
+    art.classList.remove("loaded");
+    art.alt = c.name;
+    art.onload = () => { art.classList.add("loaded"); placeholder.style.display="none"; };
+    art.onerror = () => { art.classList.remove("loaded"); placeholder.style.display="flex"; };
+    placeholder.style.display="flex";
+    art.src = c.art;
+  }
+
+  document.getElementById("characterPrev").addEventListener("click",()=>render(current-1));
+  document.getElementById("characterNext").addEventListener("click",()=>render(current+1));
+  document.addEventListener("keydown",e=>{
+    if(e.key==="ArrowLeft") render(current-1);
+    if(e.key==="ArrowRight") render(current+1);
+  });
+  render(0);
+})();
+</script>
+
+
+<script>
+(() => {
+  const modal = document.getElementById('demoModal');
+  const frame = document.getElementById('demoFrame');
+  const play = document.getElementById('demoPlay');
+  const close = document.getElementById('demoClose');
+  const fullscreen = document.getElementById('demoFullscreen');
+  if (!modal || !frame || !play) return;
+  let loaded = false;
+
+  const openDemo = () => {
+    if (!loaded) { frame.src = 'demo/index.html'; loaded = true; }
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('demo-open');
+  };
+  const closeDemo = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('demo-open');
+  };
+
+  play.addEventListener('click', openDemo);
+  close.addEventListener('click', closeDemo);
+  fullscreen.addEventListener('click', async () => {
+    try {
+      if (!document.fullscreenElement) await modal.requestFullscreen();
+      else await document.exitFullscreen();
+    } catch (_) {}
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open') && !document.fullscreenElement) closeDemo();
+  });
+})();
+</script>
+
+
+<script>
+/* ===== UNITY IFRAME CANVAS RESPONSIVE FIX / TEST ===== */
+(() => {
+  const frame = document.getElementById('demoFrame');
+  if (!frame) return;
+
+  function fitUnityCanvas() {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+
+      let style = doc.getElementById('insexstory-parent-responsive-fix');
+      if (!style) {
+        style = doc.createElement('style');
+        style.id = 'insexstory-parent-responsive-fix';
+        style.textContent = `
+          html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            background: #090909 !important;
+          }
+          #unity-container {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            transform: none !important;
+          }
+          #unity-canvas {
+            display: block !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+          }
+          #unity-footer { display: none !important; }
+        `;
+        doc.head.appendChild(style);
+      }
+
+      const container = doc.getElementById('unity-container');
+      const canvas = doc.getElementById('unity-canvas');
+      if (container) {
+        container.style.width = '100%';
+        container.style.height = '100%';
+      }
+      if (canvas) {
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+      }
+    } catch (e) {
+      console.warn('Unity responsive fix:', e);
+    }
+  }
+
+  frame.addEventListener('load', () => {
+    fitUnityCanvas();
+    setTimeout(fitUnityCanvas, 250);
+    setTimeout(fitUnityCanvas, 1000);
+    setTimeout(fitUnityCanvas, 3000);
+  });
+
+  window.addEventListener('resize', fitUnityCanvas);
+  function forceUnityResize() {
+    fitUnityCanvas();
+    try {
+      const win = frame.contentWindow;
+      if (win) win.dispatchEvent(new Event('resize'));
+    } catch (e) {
+      console.warn('Unity fullscreen resize:', e);
+    }
+  }
+
+  function wakeUnityAfterFullscreen() {
+    forceUnityResize();
+    try {
+      const win = frame.contentWindow;
+      const doc = frame.contentDocument;
+      const canvas = doc && doc.getElementById('unity-canvas');
+
+      if (win) win.focus();
+
+      if (canvas) {
+        canvas.setAttribute('tabindex', '0');
+        try { canvas.focus({ preventScroll: true }); }
+        catch (_) { canvas.focus(); }
+      }
+
+      if (win) {
+        win.dispatchEvent(new Event('resize'));
+        win.dispatchEvent(new Event('focus'));
+      }
+    } catch (e) {
+      console.warn('Unity fullscreen focus:', e);
+    }
+  }
+
+  document.addEventListener('fullscreenchange', () => {
+    wakeUnityAfterFullscreen();
+    setTimeout(wakeUnityAfterFullscreen, 100);
+    setTimeout(wakeUnityAfterFullscreen, 300);
+    setTimeout(wakeUnityAfterFullscreen, 700);
+    setTimeout(wakeUnityAfterFullscreen, 1200);
+  });
+})();
+</script>
+
+</body></html>
