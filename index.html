@@ -489,7 +489,18 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
   .demo-modal { padding:6px; }
   .demo-toolbar { flex-basis:38px; }
 }
-</style></head><body>
+</style>
+<!-- Предзагрузка основной графики -->
+<link rel="preload" as="image" href="steam-cover1.png">
+<link rel="preload" as="image" href="characters/neighbor.png">
+<link rel="preload" as="image" href="characters/spider.png">
+<link rel="preload" as="image" href="characters/cockroach.png">
+<link rel="preload" as="image" href="characters/MOL.png">
+<link rel="preload" as="image" href="characters/neighbor-thumb.png">
+<link rel="preload" as="image" href="characters/spider-thumb.png">
+<link rel="preload" as="image" href="characters/cockroach-thumb.png">
+<link rel="preload" as="image" href="characters/MOL-thumb.png">
+</head><body>
 <div class="sitebar"><div class="brand">INSEXSTORY // ПРЕЗЕНТАЦИЯ</div><div><a href="#contents">Содержание</a> &nbsp; <a href="javascript:window.print()">Печать / PDF</a></div></div>
 <header class="hero cover-hero">
   <div class="eyebrow cover-eyebrow">Издательская презентация / рабочая версия</div>
@@ -565,49 +576,49 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
 <div class="mock-grid">
 <a class="mock gallery-item" href="images/01-vn.jpg" data-full="images/01-vn.jpg" aria-label="Открыть: Визуальная новелла">
   <span class="mock-empty">Место для изображения<code>images/01-vn.jpg</code></span>
-  <img src="images/01-vn.jpg" alt="Визуальная новелла" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/01-vn.jpg" alt="Визуальная новелла" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">01</span>
   <span class="mock-label">Визуальная новелла<small>Фон. Персонаж. Диалоговое окно. Кнопки управления.</small></span>
 </a>
 <a class="mock gallery-item" href="images/02-lab.jpg" data-full="images/02-lab.jpg" aria-label="Открыть: Исследование лаборатории">
   <span class="mock-empty">Место для изображения<code>images/02-lab.jpg</code></span>
-  <img src="images/02-lab.jpg" alt="Исследование лаборатории" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/02-lab.jpg" alt="Исследование лаборатории" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">02</span>
   <span class="mock-label">Микро-интерактивы<small>Маленькие мини-игры на 10–30 секунд. Поиск предметов, пазл, чистка и т.п.</small></span>
 </a>
 <a class="mock gallery-item" href="images/03-potion.jpg" data-full="images/03-potion.jpg" aria-label="Открыть: Зельеварение">
   <span class="mock-empty">Место для изображения<code>images/03-potion.jpg</code></span>
-  <img src="images/03-potion.jpg" alt="Зельеварение" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/03-potion.jpg" alt="Зельеварение" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">03</span>
   <span class="mock-label">Основная игра - Зельеварение<small>Котёл, жидкости, реагенты, открытые рецепты и UI для контроля.</small></span>
 </a>
 <a class="mock gallery-item" href="images/04-td.jpg" data-full="images/04-td.jpg" aria-label="Открыть: Защита Соседки">
   <span class="mock-empty">Место для изображения<code>images/04-td.jpg</code></span>
-  <img src="images/04-td.jpg" alt="Защита Соседки" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/04-td.jpg" alt="Защита Соседки" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">04</span>
   <span class="mock-label">Основная игра - Tower Defense<small>Маршрут насекомых, точки расчистки, распылители и энергия героя.</small></span>
 </a>
 <a class="mock gallery-item" href="images/05-choice.jpg" data-full="images/05-choice.jpg" aria-label="Открыть: Выбор стороны">
   <span class="mock-empty">Место для изображения<code>images/05-choice.jpg</code></span>
-  <img src="images/05-choice.jpg" alt="Выбор стороны" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/05-choice.jpg" alt="Выбор стороны" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">05</span>
   <span class="mock-label">Выбор стороны в сюжете<small>Соседка и Паучиха. Один сюжетный выбор ведёт к двум разным игровым веткам.</small></span>
 </a>
 <a class="mock gallery-item" href="images/06-reverse-td.jpg" data-full="images/06-reverse-td.jpg" aria-label="Открыть: Наступление Паучихи">
   <span class="mock-empty">Место для изображения<code>images/06-reverse-td.jpg</code></span>
-  <img src="images/06-reverse-td.jpg" alt="Наступление Паучихи" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/06-reverse-td.jpg" alt="Наступление Паучихи" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">06</span>
   <span class="mock-label">Clash Royale в руте Паучихи<small>Вертикальная арена, выбор бойцов, ресурс Паучихи и боковая зона анимации.</small></span>
 </a>
 <a class="mock gallery-item" href="images/07-adult-scene.jpg" data-full="images/07-adult-scene.jpg" aria-label="Открыть: Взрослая сцена">
   <span class="mock-empty">Место для изображения<code>images/07-adult-scene.jpg</code></span>
-  <img src="images/07-adult-scene.jpg" alt="Взрослая сцена" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/07-adult-scene.jpg" alt="Взрослая сцена" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">07</span>
   <span class="mock-label">Пример adult контента<small>CG-арт adult сцены.</small></span>
 </a>
 <a class="mock gallery-item" href="images/08-adult-scene.jpg" data-full="images/08-adult-scene.jpg" aria-label="Открыть: Взрослая CG-сцена">
   <span class="mock-empty">Место для изображения<code>images/08-adult-scene.jpg</code></span>
-  <img src="images/08-adult-scene.jpg" alt="Взрослая CG-сцена" loading="lazy" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
+  <img src="images/08-adult-scene.jpg" alt="Взрослая CG-сцена" loading="eager" onload="this.parentElement.classList.add('has-image'); this.previousElementSibling.style.display='none'" onerror="this.style.display='none'; this.parentElement.removeAttribute('href'); this.parentElement.style.cursor='default'">
   <span class="mock-num">08</span>
   <span class="mock-label">Пример adult контента<small>Дополнительный CG-арт adult сцены.</small></span>
 </a>
@@ -754,6 +765,17 @@ const characters = [
     thumb: "characters/MOL-thumb.png"
   }
 ];
+
+/* Загружаем все изображения персонажей сразу и сохраняем их в кэше браузера. */
+const characterImageCache = [];
+characters.forEach(c => {
+  [c.art, c.thumb].forEach(src => {
+    const img = new Image();
+    img.decoding = "async";
+    img.src = src;
+    characterImageCache.push(img);
+  });
+});
 
 (() => {
   let current = 0;
