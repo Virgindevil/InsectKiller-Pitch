@@ -436,6 +436,59 @@ body.demo-open{overflow:hidden}
   .paper th { font-size: 9.4pt; }
 }
 
+
+
+/* ===== CLEAN MEDIA + LANDSCAPE PHONE UI ===== */
+/* Убираем печатные/полутоновые полосы и точки с экранной версии. */
+body:before, .hero:after, .paper:after, .mock:before { display:none !important; }
+.mock, .mock-label, .mock-num, .mock img { filter:none !important; }
+.mock img { image-rendering:auto; }
+.mock-label, .mock-num { text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
+
+/* Горизонтальный телефон: сохраняем двухколоночную презентацию, но уплотняем UI. */
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  .sitebar { position:relative; padding:6px 14px; border-bottom-width:3px; gap:10px; }
+  .brand { font-size:18px; }
+  .sitebar a { font-size:10px; }
+  .hero,.paper { width:calc(100% - 16px); margin:8px auto; padding:22px 26px 26px; }
+  .hero { min-height:auto; }
+  .toc { width:calc(100% - 16px); margin:0 auto 8px; padding:12px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .toc a { padding:5px; font-size:10px; }
+  h1 { font-size:clamp(52px,12vw,100px); }
+  h2 { font-size:clamp(32px,6vw,52px); }
+  h3 { font-size:22px; margin-top:22px; }
+  .paper p { font-size:14px; line-height:1.48; }
+  .paper li { font-size:13px; line-height:1.45; margin:5px 0; }
+  .paper table { font-size:12px; }
+  .paper th { font-size:13px; }
+  .paper th,.paper td { padding:8px 9px; }
+  .section-no { font-size:58px; }
+  .cover-hero { padding:20px 24px 24px; }
+  .cover-banner { min-height:0; aspect-ratio:1920/620; }
+  .cover-title { font-size:clamp(42px,10vw,78px); }
+  .cover-bottom .sub { font-size:24px; margin-top:12px; }
+  .tags { margin:8px 0 16px; }
+  .tag { font-size:10px; padding:4px 7px; }
+  .logline { font-size:14px; padding:10px 14px; border-left-width:8px; }
+  .mock-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:18px 0; }
+  .mock { aspect-ratio:16/9; border-width:2px; }
+  .mock-num { left:10px; top:8px; font-size:32px; padding:2px 6px 4px; }
+  .mock-label { left:10px; right:10px; bottom:10px; padding:7px 9px; font-size:18px; line-height:1.02; }
+  .mock small { font-size:9px; line-height:1.25; margin-top:4px; }
+  .character-stage { display:grid; grid-template-columns:82px minmax(0,1fr) minmax(250px,38%); min-height:100vh; }
+  .character-rail { padding:38px 10px 16px; flex-direction:column; border-right:3px solid #303033; border-bottom:0; }
+  .character-thumb { width:52px; height:52px; }
+  .character-main { padding:42px 24px 30px; }
+  .character-name { font-size:clamp(42px,7vw,72px); }
+  .character-quote { font-size:clamp(18px,2.5vw,26px); }
+  .character-desc { font-size:13px; line-height:1.5; }
+  .character-art-wrap,.character-art { min-height:100vh; }
+  .character-help { display:none; }
+  .lightbox { padding:8px; }
+  .lightbox img { max-height:96vh; max-width:97vw; }
+  .demo-modal { padding:6px; }
+  .demo-toolbar { flex-basis:38px; }
+}
 </style></head><body>
 <div class="sitebar"><div class="brand">INSEXSTORY // ПРЕЗЕНТАЦИЯ</div><div><a href="#contents">Содержание</a> &nbsp; <a href="javascript:window.print()">Печать / PDF</a></div></div>
 <header class="hero cover-hero">
