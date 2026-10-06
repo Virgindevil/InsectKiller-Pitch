@@ -658,6 +658,28 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
   .character-desc { font-size:10px !important; line-height:1.32 !important; }
 }
 
+
+/* ===== NEIGHBOR ALT DESIGN ===== */
+.character-design-toggle{
+  margin-top:12px;
+  width:max-content;
+  max-width:100%;
+  border:2px solid #f5f1e8;
+  background:#0b0b0c;
+  color:#f5f1e8;
+  padding:10px 14px;
+  cursor:pointer;
+  font:700 12px/1 Inter,Arial,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.character-design-toggle:hover{background:#f5f1e8;color:#111}
+.character-design-toggle[hidden]{display:none!important}
+@media (orientation: landscape) and (max-height:600px) and (max-width:1100px){
+  .character-design-toggle{margin-top:8px;padding:7px 9px;font-size:8px}
+}
+@media print{.character-design-toggle{display:none!important}}
+
 </style>
 <!-- Предзагрузка основной графики -->
 <link rel="preload" as="image" href="steam-cover1.png">
@@ -724,6 +746,7 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
       <p class="character-quote" id="characterQuote">«Не дрейфь, салага! Нам ещё нужно пол кампуса твоей спермой залить!»</p>
       <p class="character-desc" id="characterDesc"></p>
       <ul class="character-facts" id="characterFacts"></ul>
+      <button class="character-design-toggle" id="characterDesignToggle" type="button" hidden>Новый дизайн</button>
     </div>
     <div class="character-art-wrap">
       <div class="character-placeholder" id="characterPlaceholder"></div>
@@ -931,7 +954,8 @@ const characters = [
     description: "Соседка главного героя и главный двигатель первой половины истории. Вытаскивает ГГ из комнаты и вводит в мир. Практичная, язвительная и достаточно безответственная, чтобы отлично дополнять героя.",
     facts: ["Человек", "Союзник", "Зельеварение", "Ветка излечения"],
     art: "characters/neighbor.png",
-    thumb: "characters/neighbor-thumb.png"
+    thumb: "characters/neighbor-thumb.png",
+    altArt: "characters/neighbor2.png"
   },
   {
     name: "Паучиха",
@@ -965,7 +989,7 @@ const characters = [
 /* Загружаем все изображения персонажей сразу и сохраняем их в кэше браузера. */
 const characterImageCache = [];
 characters.forEach(c => {
-  [c.art, c.thumb].forEach(src => {
+  [c.art, c.thumb, c.altArt].filter(Boolean).forEach(src => {
     const img = new Image();
     img.decoding = "async";
     img.src = src;
@@ -985,6 +1009,8 @@ characters.forEach(c => {
   const facts = document.getElementById("characterFacts");
   const kicker = document.getElementById("characterKicker");
   const counter = document.getElementById("characterCounter");
+  const designToggle = document.getElementById("characterDesignToggle");
+  let showAltDesign = false;
 
   const pad = n => String(n).padStart(2,"0");
 
@@ -994,7 +1020,7 @@ characters.forEach(c => {
     b.type = "button";
     b.title = c.name;
     b.innerHTML = `<span class="initials">${pad(i+1)}</span><img src="${c.thumb}" alt="${c.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">`;
-    b.addEventListener("click", () => render(i));
+    b.addEventListener("click", () => { showAltDesign = false; render(i); });
     rail.appendChild(b);
   });
 
@@ -1009,20 +1035,26 @@ characters.forEach(c => {
     facts.innerHTML = c.facts.map(x=>`<li>${x}</li>`).join("");
     kicker.textContent = `${pad(current+1)} / Персонаж`;
     counter.textContent = `${pad(current+1)} / ${pad(characters.length)}`;
-    placeholder.innerHTML = `Место для прозрачного спрайта<code>${c.art}</code>`;
+    const artSrc = (showAltDesign && c.altArt) ? c.altArt : c.art;
+    placeholder.innerHTML = `Место для прозрачного спрайта<code>${artSrc}</code>`;
     art.classList.remove("loaded");
     art.alt = c.name;
     art.onload = () => { art.classList.add("loaded"); placeholder.style.display="none"; };
     art.onerror = () => { art.classList.remove("loaded"); placeholder.style.display="flex"; };
     placeholder.style.display="flex";
-    art.src = c.art;
+    art.src = artSrc;
+    if (designToggle) {
+      designToggle.hidden = !c.altArt;
+      designToggle.textContent = showAltDesign && c.altArt ? "Старый дизайн" : "Новый дизайн";
+    }
   }
 
-  document.getElementById("characterPrev").addEventListener("click",()=>render(current-1));
-  document.getElementById("characterNext").addEventListener("click",()=>render(current+1));
+  if (designToggle) designToggle.addEventListener("click",()=>{ showAltDesign = !showAltDesign; render(current); });
+  document.getElementById("characterPrev").addEventListener("click",()=>{ showAltDesign = false; render(current-1); });
+  document.getElementById("characterNext").addEventListener("click",()=>{ showAltDesign = false; render(current+1); });
   document.addEventListener("keydown",e=>{
-    if(e.key==="ArrowLeft") render(current-1);
-    if(e.key==="ArrowRight") render(current+1);
+    if(e.key==="ArrowLeft"){ showAltDesign = false; render(current-1); }
+    if(e.key==="ArrowRight"){ showAltDesign = false; render(current+1); }
   });
   render(0);
 })();
