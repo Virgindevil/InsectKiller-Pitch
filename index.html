@@ -1010,7 +1010,7 @@ characters.forEach(c => {
   const kicker = document.getElementById("characterKicker");
   const counter = document.getElementById("characterCounter");
   const designToggle = document.getElementById("characterDesignToggle");
-  let showAltDesign = false;
+  let showAltDesign = true;
 
   const pad = n => String(n).padStart(2,"0");
 
@@ -1020,7 +1020,7 @@ characters.forEach(c => {
     b.type = "button";
     b.title = c.name;
     b.innerHTML = `<span class="initials">${pad(i+1)}</span><img src="${c.thumb}" alt="${c.name}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">`;
-    b.addEventListener("click", () => { showAltDesign = false; render(i); });
+    b.addEventListener("click", () => { showAltDesign = !!characters[i].altArt; render(i); });
     rail.appendChild(b);
   });
 
@@ -1050,11 +1050,11 @@ characters.forEach(c => {
   }
 
   if (designToggle) designToggle.addEventListener("click",()=>{ showAltDesign = !showAltDesign; render(current); });
-  document.getElementById("characterPrev").addEventListener("click",()=>{ showAltDesign = false; render(current-1); });
-  document.getElementById("characterNext").addEventListener("click",()=>{ showAltDesign = false; render(current+1); });
+  document.getElementById("characterPrev").addEventListener("click",()=>{ const next=(current-1+characters.length)%characters.length; showAltDesign=!!characters[next].altArt; render(next); });
+  document.getElementById("characterNext").addEventListener("click",()=>{ const next=(current+1)%characters.length; showAltDesign=!!characters[next].altArt; render(next); });
   document.addEventListener("keydown",e=>{
-    if(e.key==="ArrowLeft"){ showAltDesign = false; render(current-1); }
-    if(e.key==="ArrowRight"){ showAltDesign = false; render(current+1); }
+    if(e.key==="ArrowLeft"){ const next=(current-1+characters.length)%characters.length; showAltDesign=!!characters[next].altArt; render(next); }
+    if(e.key==="ArrowRight"){ const next=(current+1)%characters.length; showAltDesign=!!characters[next].altArt; render(next); }
   });
   render(0);
 })();
