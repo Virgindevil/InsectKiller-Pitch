@@ -691,6 +691,31 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
 <link rel="preload" as="image" href="characters/spider-thumb.png">
 <link rel="preload" as="image" href="characters/cockroach-thumb.png">
 <link rel="preload" as="image" href="characters/MOL-thumb.png">
+
+<style>
+.animation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:28px 0}
+.animation-card{font:inherit;color:var(--ink);text-align:left;cursor:pointer;border:3px solid var(--ink);padding:0;background:#f8f5ed;box-shadow:7px 7px 0 var(--red)}
+.animation-card:nth-child(2n){box-shadow:7px 7px 0 var(--yellow)}
+.animation-card:hover,.animation-card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.animation-preview{aspect-ratio:16/9;display:grid;place-content:center;text-align:center;gap:10px;background:repeating-linear-gradient(135deg,#ded9cd 0 20px,#e7e2d7 20px 40px);border-bottom:3px solid var(--ink)}
+.animation-preview{position:relative;overflow:hidden}
+.animation-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.animation-preview.has-poster .animation-play{position:relative;z-index:1;display:grid;place-content:center;width:60px;height:60px;border-radius:50%;background:#111b;color:#fff;margin:auto}
+.animation-preview.has-poster .animation-placeholder-label{visibility:hidden}
+.animation-play{font-size:40px;line-height:1}.animation-caption{display:block;padding:16px 20px}
+.animation-caption strong{font-family:Oswald,Impact,sans-serif;font-size:28px;text-transform:uppercase;display:block}
+.animation-caption small{display:block;margin-top:4px}
+.animation-viewer{color:#fff;background:#111;border:2px solid #777;padding:20px;width:min(1000px,calc(100% - 24px));max-height:94vh;overflow:auto}
+.animation-viewer::backdrop{background:#000d}
+.animation-toolbar,.animation-navigation{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.animation-toolbar h3{margin:0;font-size:26px}.animation-viewer button{font:inherit;padding:9px 15px;cursor:pointer;border:2px solid #fff;color:#fff;background:#222}
+.animation-viewer button:disabled{opacity:.35;cursor:default}.animation-viewer button:focus-visible{outline:3px solid var(--yellow)}
+.animation-viewer video{width:100%;max-height:65vh;background:#000;display:block;margin:18px 0;object-fit:contain}
+.animation-viewer [hidden]{display:none!important}.animation-empty{min-height:250px;display:grid;place-content:center;text-align:center;border:1px dashed #777;margin:18px 0;padding:24px}
+.animation-status{min-height:1.5em;color:#ddd;font-size:14px;overflow-wrap:anywhere}
+@media(max-width:700px){.animation-grid{grid-template-columns:1fr}.animation-viewer{padding:12px}}
+@media print{.animation-viewer{display:none!important}.animation-card{break-inside:avoid}.animation-grid{gap:15px}}
+</style>
 </head><body>
 <div class="sitebar"><div class="brand">INSEXSTORY // ПРЕЗЕНТАЦИЯ</div><div><a href="#contents">Содержание</a> &nbsp; <a href="javascript:window.print()">Печать / PDF</a></div></div>
 <header class="hero cover-hero">
@@ -715,7 +740,7 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
     <p class="cover-meta"><b>ПК • 2D • Одиночная игра • 18+ • Unity 6 + Naninovel</b><br>Авторы: Matuzov • Dohlik</p>
   </div>
 </header>
-<nav class="toc" id="contents"><a href="#s1"><span>01</span>Коротко о проекте</a><a href="#s2"><span>02</span>Формат, жанр и аудитория</a><a href="#s3"><span>03</span>Ориентиры и коммерческий контекст</a><a href="#s4"><span>04</span>Синопсис</a><a href="#s5"><span>05</span>Из чего состоит игра: игровой цикл</a><a href="#s6"><span>06</span>Визуальные материалы проекта</a><a href="#s7"><span>07</span>Демонстрационные материалы</a><a href="#s8"><span>08</span>Геймплейные тонкости</a><a href="#s9"><span>09</span>Оценка объёма и сроков производства</a><a href="#s11"><span>11</span>Кто будет заниматься</a><a href="#s12"><span>12</span>Пару слов для издателя</a><a href="#s14"><span>14</span>Итог</a></nav>
+<nav class="toc" id="contents"><a href="#s1"><span>01</span>Коротко о проекте</a><a href="#s2"><span>02</span>Формат, жанр и аудитория</a><a href="#s3"><span>03</span>Ориентиры и коммерческий контекст</a><a href="#s4"><span>04</span>Синопсис</a><a href="#s5"><span>05</span>Из чего состоит игра: игровой цикл</a><a href="#s6"><span>06</span>Визуальные материалы проекта</a><a href="#animations"><span>06А</span>Тестовые анимации</a><a href="#s7"><span>07</span>Демонстрационные материалы</a><a href="#s8"><span>08</span>Геймплейные тонкости</a><a href="#s9"><span>09</span>Оценка объёма и сроков производства</a><a href="#s11"><span>11</span>Кто будет заниматься</a><a href="#s12"><span>12</span>Пару слов для издателя</a><a href="#s14"><span>14</span>Итог</a></nav>
 <section class="paper section" id="s1">
 <div class="section-no">01</div><div class="section-kicker">INSEXSTORY / ПРЕЗЕНТАЦИЯ</div>
 <h2>Коротко о проекте</h2><div class="rule"></div><p>InsexStory - сюжетная 2D-игра для взрослой аудитории, которая соединяет визуальную новеллу с активными мини-играми. Первая половина прохождения классическая: диалоги, мини-игры, выборы, секс-сцены. После центрального выбора структура расходится: ветка Соседки продолжает старые мини-игры: зельеварение и Tower Defense, а ветка Паучихи представляет новые игры и основной режим в духе Clash Royale.</p><div class="table-wrap"><table><thead><tr><th>Главная особенность для издателя.<br>Ключевой выбор меняет не только диалоги, романтическую линию и финал, но и основной игровой жанр второй половины. <br>Это делает вторую ветку полноценной причиной для повторного прохождения.</th></tr></thead><tbody></tbody></table></div>
@@ -819,7 +844,22 @@ body:before, .hero:after, .paper:after, .mock:before { display:none !important; 
   <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
   <img id="lightbox-image" alt="">
 </div>
-</section><section class="paper section" id="s7">
+</section>
+<section class="paper section" id="animations">
+<div class="section-no">06А</div><div class="section-kicker">INSEXSTORY / МАТЕРИАЛЫ ПРОЕКТА</div>
+<h2>Тестовые анимации</h2><div class="rule"></div>
+<p>Примеры движения и анимации персонажей. Выберите карточку, чтобы открыть просмотрщик.</p>
+<div class="animation-grid" id="animationGrid"></div>
+<noscript>Для просмотра анимаций включите JavaScript в браузере.</noscript>
+</section>
+<dialog class="animation-viewer" id="animationViewer" aria-labelledby="animationTitle">
+  <div class="animation-toolbar"><h3 id="animationTitle">Тестовые анимации</h3><button id="animationClose" type="button" aria-label="Закрыть просмотрщик">Закрыть ×</button></div>
+  <video id="animationVideo" controls playsinline loop preload="metadata" hidden></video>
+  <div class="animation-empty" id="animationEmpty">Анимации готовятся</div>
+  <p class="animation-status" id="animationStatus" role="status" aria-live="polite"></p>
+  <div class="animation-navigation"><button id="animationPrev" type="button" aria-label="Предыдущая анимация">← Назад</button><span id="animationCounter"></span><button id="animationNext" type="button" aria-label="Следующая анимация">Далее →</button></div>
+</dialog>
+<section class="paper section" id="s7">
 <div class="section-no">07</div><div class="section-kicker">INSEXSTORY / ДЕМОНСТРАЦИЯ</div>
 <h2>Демонстрационные материалы</h2><div class="rule"></div>
 <p>Для знакомства с проектом используется компактный вертикальный срез на 10–20 минут. <br>Web-версию можно запустить прямо из презентации. Портативный билд для Windows доступен по <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">ссылке</a>.</p>
@@ -1206,6 +1246,114 @@ characters.forEach(c => {
     setTimeout(wakeUnityAfterFullscreen, 300);
     setTimeout(wakeUnityAfterFullscreen, 700);
     setTimeout(wakeUnityAfterFullscreen, 1200);
+  });
+})();
+</script>
+
+
+<script>
+/* ANIMATION_GALLERY_CONFIG — редактируйте поля poster и списки files ниже.
+   Положите MP4 рядом с HTML в папку animations или используйте HTTPS-ссылки.
+   Пример: files: ["animations/example-01.mp4", "animations/example-02.mp4"]
+   Пути указываются относительно index.html, с прямыми слешами /.
+   poster: "images/example-preview.jpg" — изображение обложки карточки (JPG, PNG, WebP).
+   Пустой poster: "" или недоступное изображение оставляет полосатый плейсхолдер.
+   Пустой список files: [] оставляет просмотрщик без видео.
+*/
+const animationGallery = [
+  { title: "Тараканы", poster: "images/cc-preview.png", files: ["animations/cockroach1.mp4", "animations/cockroach2.mp4", "animations/cockroach3.mp4", "animations/cockroach4.mp4", "animations/cockroach5.mp4", "animations/cockroach6.mp4"] },
+  { title: "Моль", poster: "images/mh-preview.jpg", files: ["animations/moth1.mp4", "animations/moth2.mp4"] },
+  { title: "Соседка", poster: "images/nh-preview.png", files: ["animations/neighbor1.mp4", "animations/neighbor1.mp4"] },
+  { title: "Паучиха", poster: "images/sp-preview.png", files: ["animations/spider_woman1.mp4", "animations/spider1.mp4", "animations/spider2.mp4", "animations/spider3.mp4"] }
+];
+(() => {
+  const byId = id => document.getElementById(id);
+  const grid = byId('animationGrid'), viewer = byId('animationViewer');
+  const video = byId('animationVideo'), empty = byId('animationEmpty');
+  const status = byId('animationStatus'), counter = byId('animationCounter');
+  const prev = byId('animationPrev'), next = byId('animationNext');
+  let group = animationGallery[0], index = 0, opener, previousOverflow = '';
+  function clearVideo() {
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+  function render() {
+    clearVideo();
+    byId('animationTitle').textContent = group.title;
+    const count = group.files.length;
+    video.hidden = !count;
+    empty.hidden = !!count;
+    prev.disabled = next.disabled = count < 2;
+    counter.textContent = count ? `${index + 1} / ${count}` : '0 / 0';
+    status.textContent = count ? group.files[index] : 'Материалы появятся здесь после добавления анимаций.';
+    if (count) {
+      try {
+        const url = new URL(group.files[index], document.baseURI);
+        if (!['file:', 'http:', 'https:'].includes(url.protocol)) throw new Error('Invalid URL');
+        video.src = url.href;
+        video.load();
+      } catch (_) {
+        status.textContent = 'Не удалось открыть ссылку на видео. Проверьте путь в списке files.';
+      }
+    }
+  }
+  function move(delta) {
+    if (group.files.length < 2) return;
+    index = (index + delta + group.files.length) % group.files.length;
+    render();
+  }
+  animationGallery.forEach(item => {
+    const card = document.createElement('button');
+    card.type = 'button'; card.className = 'animation-card';
+    card.setAttribute('aria-haspopup', 'dialog');
+    card.innerHTML = '<span class="animation-preview"><span class="animation-play" aria-hidden="true">▷</span><span class="animation-placeholder-label">Тестовая анимация</span></span><span class="animation-caption"><strong></strong><small></small></span>';
+    if (typeof item.poster === 'string' && item.poster.trim()) {
+      const preview = card.querySelector('.animation-preview');
+      const poster = document.createElement('img');
+      poster.className = 'animation-poster';
+      poster.alt = ''; // Название карточки уже доступно рядом с изображением.
+      poster.loading = 'eager'; // Загружаем даже пока изображение скрыто до события load.
+      poster.decoding = 'async';
+      poster.hidden = true;
+      poster.addEventListener('load', () => {
+        poster.hidden = false;
+        preview.classList.add('has-poster');
+      });
+      poster.addEventListener('error', () => {
+        poster.hidden = true;
+        preview.classList.remove('has-poster');
+      });
+      preview.prepend(poster);
+      poster.src = item.poster;
+    }
+    card.querySelector('strong').textContent = item.title;
+    card.querySelector('small').textContent = item.files.length ? `Открыть просмотр · Видео: ${item.files.length}` : 'Анимации готовятся · Открыть просмотр';
+    card.addEventListener('click', () => {
+      group = item; index = 0; opener = card;
+      previousOverflow = document.body.style.overflow;
+      render(); viewer.showModal(); document.body.style.overflow = 'hidden';
+      byId('animationClose').focus();
+    });
+    grid.appendChild(card);
+  });
+  byId('animationClose').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('close', () => {
+    clearVideo(); document.body.style.overflow = previousOverflow;
+    if (opener) opener.focus();
+  });
+  viewer.addEventListener('click', event => { if (event.target === viewer) {
+    const rect = viewer.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) viewer.close();
+  }});
+  viewer.addEventListener('keydown', event => {
+    if (event.target === video || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1);
+  });
+  prev.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  video.addEventListener('error', () => {
+    if (video.hasAttribute('src')) status.textContent = 'Видео не загрузилось. Проверьте ссылку, доступность файла и формат MP4 (H.264).';
   });
 })();
 </script>
